@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<head th:fragment="header">
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="../../resources/css/style.css" th:href="@{/resources/css/style.css}" />
+	<title th:text="#{user.page.title}">Title</title>
+</head>
+
+<body>
+<div>
+	<table class="box-table-a">
+		<caption th:text="#{user.table.caption}">Site Users</caption>
+		<thead>
+			<tr>
+				<th scope="col" th:text="#{user.id.label}">Id</th>
+				<th scope="col" th:text="#{user.firstname.label}">First Name</th>
+				<th scope="col" th:text="#{user.lastname.label}">Last Name</th>
+				<th scope="col" th:text="#{user.username.label}">Username</th>
+				<th scope="col" th:text="#{user.role.label}">Role</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="u : ${users}">
+				<td th:text="${u.id}">1</td>
+				<td th:text="${u.firstName}">George</td>
+				<td th:text="${u.lastName}">Washington</td>
+				<td th:text="${u.username}">gwash</td>
+				<td th:text="#{${'user.role.' + u.role}}">admin</td>
+				<td><a href="#" th:href="@{/users/delete(id=${u.id})}">del</a> | 
+					<a href="#" th:href="@{/users/edit(id=${u.id})}">edit</a>
+				</td>
+			</tr>
+							
+			<tr th:remove="all">
+				<td>2</td>
+				<td>John</td>
+				<td>Adams</td>
+				<td>jadam</td>
+				<td>user</td>
+				<td><a href="#">del</a> | <a href="#">edit</a></td>
+			</tr>
+			<tr th:remove="all">
+				<td>3</td>
+				<td>Thomas</td>
+				<td>Jefferson</td>
+				<td>tjeff</td>
+				<td>user</td>
+				<td><a href="#">del</a> | <a href="#">edit</a></td>
+			</tr>
+			<tr th:remove="all">
+				<td>4</td>
+				<td>James</td>
+				<td>Madison</td>
+				<td>jmadi</td>
+				<td>admin</td>
+				<td><a href="#">del</a> | <a href="#">edit</a></td>
+			</tr>
+			<tr th:remove="all">
+				<td>5</td>
+				<td>James</td>
+				<td>Monroe</td>
+				<td>jmonr</td>
+				<td>admin</td>
+				<td><a href="#">del</a> | <a href="#">edit</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<form action="#" th:action="@{/users/create}" th:object="${commanduser}" method="post">
+	<table class="box-table-a">
+		<caption th:text="#{${usertype + '.user.table.caption'}}">New User</caption>
+		<thead>
+			<tr>
+				<th th:text="#{user.firstname.label}">First Name</th>
+				<th th:text="#{user.lastname.label}">Last Name</th>
+				<th th:text="#{user.username.label}">Username</th>
+				<th th:text="#{user.role.label}">Role</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="text" hidden="hidden" th:field="*{id}"/>
+				    <input type="text" th:field="*{firstName}"/></td>
+				<td><input type="text" th:field="*{lastName}"/></td>
+				<td><input type="text" th:field="*{username}"/></td>
+				<td><select th:field="*{role}">
+						<option th:each="role : ${allRoles}" th:value="${role}"
+							th:text="#{${'user.role.' + role}}">Access Type 1</option>
+						<option th:remove="all" value="2">Access Type 2</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit" th:text="#{${usertype + '.user.button.label'}}">Action</button>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</div>
+</body>
+</html>

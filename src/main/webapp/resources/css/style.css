@@ -1,0 +1,45 @@
+body {
+	font-family: Arial, sans-serif;
+	font-size: 1em;
+}
+
+caption {
+	font-size: 18px;
+}
+
+/**
+ * Table style from Top 10 CSS Table Designs
+ * http://coding.smashingmagazine.com/2008/08/13/top-10-css-table-designs/
+ */
+ 
+.box-table-a {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 700px;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.box-table-a th {
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe;
+	border-top: 4px solid #aabcfe;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+
+.box-table-a td {
+	padding: 8px;
+	background: #e8edff; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid transparent;
+}
+
+.box-table-a tr:hover td {
+	background: #d0dafd;
+	color: #339;
+}
